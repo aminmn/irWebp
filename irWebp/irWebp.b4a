@@ -1,0 +1,54 @@
+﻿Version=6.5
+NumberOfModules=2
+Module1=Starter
+Module2=irWebp
+Build1=Default,ir.amin
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+IconFile=
+NumberOfFiles=0
+NumberOfLibraries=6
+Library1=core
+Library2=irlsdk
+Library3=libwebp
+Library4=javaobject
+Library5=byteconverter
+Library6=bitmapextended
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: landscape
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+End Sub
+
+Sub Globals
+	Dim webp As irWebp
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'webpToBitmap2(File.OpenInput(File.DirAssets,"a.webp"))
+	Dim draw As BitmapDrawable
+	draw.Initialize(webp.webpToBitmap(File.OpenInput(File.DirAssets,"a.webp")))
+	Activity.Background=draw
+	webp.bitmapToWebp(LoadBitmap(File.DirAssets,"a.jpg"),File.DirRootExternal,"/a.webp",0.05f)
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
